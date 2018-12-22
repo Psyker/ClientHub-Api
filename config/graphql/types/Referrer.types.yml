@@ -1,0 +1,28 @@
+Referrer:
+  type: object
+  inherits: [Timestampable]
+  config:
+    description: The client's referrer.
+    fields:
+      id:
+        builder: 'Relay::GlobalId'
+        builderConfig:
+          typeName: Referrer
+      firstname:
+        description: The referrer's firstname.
+        type: String
+      lastname:
+        description: The referrer's lastname.
+        type: String
+      email:
+        description: The referrer's email.
+        type: String
+      job:
+        description: The referrer's job.
+        type: String
+      phone:
+        description: The referrer's phone number.
+        type: String
+      client:
+        description: The referrer's company.
+        type: '[Client]'

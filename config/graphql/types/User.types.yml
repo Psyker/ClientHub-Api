@@ -1,0 +1,21 @@
+User:
+  type: object
+  config:
+    description: A user.
+    fields:
+      id:
+        builder: 'Relay::GlobalId'
+        builderConfig:
+          typeName: User
+      email:
+        description: The user's email.
+        type: String
+      firstname:
+        description: The user's firstname.
+        type: String!
+      lastname:
+        description: The user's lastname.
+        type: String!
+      roles:
+        description: The user's roles.
+        type: '[String]'

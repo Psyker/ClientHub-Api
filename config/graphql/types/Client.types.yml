@@ -1,0 +1,25 @@
+Client:
+  type: object
+  inherits: [Timestampable]
+  config:
+    description: A client
+    fields:
+      id:
+        builder: 'Relay::GlobalId'
+        builderConfig:
+          typeName: Client
+      name:
+        type: String!
+        description: The company name of the client
+      address:
+        type: String!
+        description: The address of the customer's registered office
+      zipCode:
+        type: Int!
+        description: The zip code of the customer's registered office
+      interventions:
+        type: '[Intervention]'
+        description: Interventions made at the customer's premises
+      referrers:
+        type: '[Referrer]'
+        description: The client's referrers.
