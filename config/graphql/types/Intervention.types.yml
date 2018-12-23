@@ -1,7 +1,8 @@
 Intervention:
   type: object
-  inherits: [Timestampable]
+  inherits: [Timestampable, Node]
   config:
+    interfaces: [Node]
     description: An intervention
     fields:
       id:

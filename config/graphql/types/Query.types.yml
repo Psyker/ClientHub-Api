@@ -1,0 +1,9 @@
+Query:
+  type: object
+  config:
+    fields:
+      node:
+        builder: Relay::Node
+        builderConfig:
+          nodeInterfaceType: Node
+          idFetcher: '@=resolver("App\\GraphQL\\Resolver\\GlobalIdResolver", [value])'

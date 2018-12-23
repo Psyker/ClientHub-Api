@@ -1,7 +1,8 @@
 Referrer:
   type: object
-  inherits: [Timestampable]
+  inherits: [Timestampable, Node]
   config:
+    interfaces: [Node]
     description: The client's referrer.
     fields:
       id:

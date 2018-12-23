@@ -1,0 +1,6 @@
+Node:
+  type: relay-node
+  config:
+    description: An object with an ID.
+    resolveType:
+      '@=resolver("App\\GraphQL\\Resolver\\NodeTypeResolver", [value])'

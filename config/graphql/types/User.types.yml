@@ -1,6 +1,8 @@
 User:
   type: object
+  inherits: [Node]
   config:
+    interfaces: [Node]
     description: A user.
     fields:
       id:

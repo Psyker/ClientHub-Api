@@ -47,7 +47,7 @@ class Referrer
      */
     private $client;
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }

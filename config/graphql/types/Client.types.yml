@@ -1,7 +1,8 @@
 Client:
   type: object
-  inherits: [Timestampable]
+  inherits: [Timestampable, Node]
   config:
+    interfaces: [Node]
     description: A client
     fields:
       id:
