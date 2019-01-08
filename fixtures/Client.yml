@@ -1,0 +1,6 @@
+App\Entity\Client:
+  client{1..5}:
+    name: <company()>
+    address: <streetaddress()>
+    zipCode: <numberBetween(11111, 99999)>
+    createdAt: <dateTimeBetween("-365 days", "now")>

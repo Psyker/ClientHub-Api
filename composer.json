@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "gedmo/doctrine-extensions": "^2.4",
+        "hautelook/alice-bundle": "^2.3",
         "overblog/graphql-bundle": "^0.11.10",
         "ramsey/uuid-doctrine": "^1.5",
         "symfony/console": "4.2.*",
