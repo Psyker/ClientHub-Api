@@ -1,1 +1,8 @@
 App\Entity\Referrer:
+  referrer{1..5}:
+    client: '@client<current()>'
+    firstname: <firstName()>
+    lastname: <lastName()>
+    email: <email()>
+    job: <jobTitle()>
+    phone: <phoneNumber()>

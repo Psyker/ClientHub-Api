@@ -3,5 +3,5 @@ App\Entity\Intervention:
     client: '@client*'
     startAt: <dateTimeBetween("-365 days", "-10 days")>
     endAt: <dateTimeBetween("-10 days", "now")>
-    inProgress: boolean($chanceOfGettingTrue = 50)
+    inProgress: boolean(50)
     createdAt: <dateTimeBetween("-365 days", "now")>
