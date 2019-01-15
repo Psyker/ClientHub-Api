@@ -1,0 +1,7 @@
+ClientConnection:
+  type: relay-connection
+  config:
+    nodeType: Client!
+    connectionFields:
+      totalCount:
+        type: Int!

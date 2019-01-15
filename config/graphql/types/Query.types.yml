@@ -7,3 +7,8 @@ Query:
         builderConfig:
           nodeInterfaceType: Node
           idFetcher: '@=resolver("App\\GraphQL\\Resolver\\GlobalIdResolver", [value])'
+      clients:
+        description: Get all clients.
+        type: ClientConnection!
+        argsBuilder: Relay::Connection
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\Query\\ClientsResolver", [args])'
