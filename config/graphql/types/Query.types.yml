@@ -15,6 +15,6 @@ Query:
       client:
         description: Get one client.
         type: Client!
-        resolve: '@resolver("App\\GraphQL\\Resolver\\Query\\ClientResolver", [args])'
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\Query\\ClientResolver", [args])'
         args:
           search: ClientSearch!

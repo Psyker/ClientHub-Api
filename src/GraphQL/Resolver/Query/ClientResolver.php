@@ -2,6 +2,7 @@
 
 namespace App\GraphQL\Resolver\Query;
 
+use App\Entity\Client;
 use App\Repository\ClientRepository;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Definition\Resolver\ResolverInterface;
@@ -15,7 +16,7 @@ class ClientResolver implements ResolverInterface
         $this->repository = $repository;
     }
 
-    public function __invoke(Argument $args)
+    public function __invoke(Argument $args): ?Client
     {
         $search = $args->offsetGet('search');
         [$field, $value] = [$search['field'], $search['value']];

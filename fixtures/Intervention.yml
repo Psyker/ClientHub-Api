@@ -1,6 +1,6 @@
 App\Entity\Intervention:
   intervention{1..5}:
-    client: '@client*'
+    client: '@client<current()>'
     startAt: <dateTimeBetween("-365 days", "-10 days")>
     endAt: <dateTimeBetween("-10 days", "now")>
     inProgress: boolean(50)
