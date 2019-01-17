@@ -7,4 +7,4 @@ Timestampable:
         type: DateTime!
       updatedAt:
         description: The updated date.
-        type: DateTime!
+        type: DateTime

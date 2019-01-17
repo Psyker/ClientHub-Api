@@ -1,0 +1,11 @@
+ClientSearch:
+  type: input-object
+  config:
+    description: Ways in which clients can be searched.
+    fields:
+      field:
+        type: ClientSearchField!
+        description: The field in which to search the client by.
+      value:
+        type: Any!
+        description: The value for the search.

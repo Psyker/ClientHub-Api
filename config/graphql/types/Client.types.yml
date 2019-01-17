@@ -18,6 +18,9 @@ Client:
       zipCode:
         type: Int!
         description: The zip code of the customer's registered office
+      slug:
+        type: String!
+        description: The slug of the client based on the name.
       interventions:
         type: '[Intervention]'
         description: Interventions made at the customer's premises

@@ -1,0 +1,11 @@
+ClientSearchField:
+  type: enum
+  config:
+    description: Properties by which clients can be searched.
+    values:
+      ID:
+        value: id
+        description: Allows searching clients by their ID.
+      SLUG:
+        value: slug
+        description: Allows searching risifics by their slug.

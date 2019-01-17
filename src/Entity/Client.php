@@ -6,6 +6,7 @@ use App\Traits\Timestampable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
@@ -36,6 +37,13 @@ class Client
      * @ORM\Column(type="string")
      */
     private $zipCode;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     * @Gedmo\Slug(fields={"name"})
+     * @var string
+     */
+    private $slug;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Intervention", mappedBy="client", orphanRemoval=true)
@@ -90,6 +98,18 @@ class Client
     public function setZipCode(string $zipCode): self
     {
         $this->zipCode = $zipCode;
+
+        return $this;
+    }
+
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): Client
+    {
+        $this->slug = $slug;
 
         return $this;
     }

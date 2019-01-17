@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Traits;
+
 use Gedmo\Mapping\Annotation as Gedmo;
 
 trait Timestampable

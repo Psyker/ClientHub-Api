@@ -1,0 +1,6 @@
+Any:
+  type: custom-scalar
+  config:
+    serialize: ["App\\GraphQL\\Type\\AnyType", 'serialize']
+    parseValue: ["App\\GraphQL\\Type\\AnyType", 'parseValue']
+    parseLiteral: ["App\\GraphQL\\Type\\AnyType", 'parseLiteral']

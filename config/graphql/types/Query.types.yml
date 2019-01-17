@@ -12,3 +12,9 @@ Query:
         type: ClientConnection!
         argsBuilder: Relay::Connection
         resolve: '@=resolver("App\\GraphQL\\Resolver\\Query\\ClientsResolver", [args])'
+      client:
+        description: Get one client.
+        type: Client!
+        resolve: '@resolver("App\\GraphQL\\Resolver\\Query\\ClientResolver", [args])'
+        args:
+          search: ClientSearch!

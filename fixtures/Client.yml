@@ -3,4 +3,5 @@ App\Entity\Client:
     name: <company()>
     address: <streetaddress()>
     zipCode: <numberBetween(11111, 99999)>
+    slug: <slug()>
     createdAt: <dateTimeBetween("-365 days", "now")>
