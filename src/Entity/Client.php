@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
@@ -24,16 +25,21 @@ class Client
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="3", max="150")
+     * @ORM\Column(type="string", length=150)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
+     * @Assert\Length(min="10", max="200")
+     * @ORM\Column(type="text", length=200)
      */
     private $address;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
     private $zipCode;
@@ -47,6 +53,7 @@ class Client
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Intervention", mappedBy="client", orphanRemoval=true)
+     * @ORM\OrderBy({"created_at": "ASC"})
      */
     private $interventions;
 
