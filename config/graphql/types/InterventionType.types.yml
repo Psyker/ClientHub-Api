@@ -1,0 +1,17 @@
+InterventionType:
+  type: object
+  inherits: [Timestampable, Node]
+  config:
+    interfaces: [Node]
+    description: An intervention type.
+    fields:
+      id:
+        builder: 'Relay::GlobalId'
+        builderConfig:
+          typeName: InterventionType
+      name:
+        type: String!
+        description: The name of the type.
+      slug:
+        type: String!
+        description: The slug of the type.

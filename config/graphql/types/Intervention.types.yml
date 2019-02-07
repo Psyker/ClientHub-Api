@@ -12,6 +12,9 @@ Intervention:
       client:
         type: '[Client]'
         description: The client receiving the intervention.
+      type:
+        type: '[InterventionType]'
+        description: The type of the intervention.
       startAt:
         description: The start date of the intervention.
         type: DateTime

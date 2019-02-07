@@ -27,6 +27,11 @@ class Intervention
     private $client;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\InterventionType")
+     */
+    private $type;
+
+    /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $startAt;
@@ -54,6 +59,18 @@ class Intervention
     public function setClient(?Client $client): self
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    public function getType(): InterventionType
+    {
+        return $this->type;
+    }
+
+    public function setType(InterventionType$type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

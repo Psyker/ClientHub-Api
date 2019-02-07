@@ -1,0 +1,5 @@
+App\Entity\InterventionType:
+  intervention_type{1..3}:
+    name: <jobTitle()>
+    slug: <slug()>
+    createdAt: <dateTimeBetween("-365 days", "now")>

@@ -1,7 +1,36 @@
 App\Entity\Intervention:
-  intervention{1..5}:
-    client: '@client<current()>'
+  intervention1:
+    client: '@client1'
+    type: '@intervention_type1'
     startAt: <dateTimeBetween("-365 days", "-10 days")>
     endAt: <dateTimeBetween("-10 days", "now")>
-    inProgress: boolean(50)
+    inProgress: false
+    createdAt: <dateTimeBetween("-365 days", "now")>
+  intervention2:
+    client: '@client1'
+    type: '@intervention_type2'
+    startAt: <dateTimeBetween("-365 days", "-10 days")>
+    endAt: <dateTimeBetween("-10 days", "now")>
+    inProgress: false
+    createdAt: <dateTimeBetween("-365 days", "now")>
+  intervention3:
+    client: '@client2'
+    type: '@intervention_type1'
+    startAt: <dateTimeBetween("-365 days", "-10 days")>
+    endAt: <dateTimeBetween("-10 days", "now")>
+    inProgress: true
+    createdAt: <dateTimeBetween("-365 days", "now")>
+  intervention4:
+    client: '@client3'
+    type: '@intervention_type3'
+    startAt: <dateTimeBetween("-365 days", "-10 days")>
+    endAt: <dateTimeBetween("-10 days", "now")>
+    inProgress: true
+    createdAt: <dateTimeBetween("-365 days", "now")>
+  intervention5:
+    client: '@client4'
+    type: '@intervention_type2'
+    startAt: <dateTimeBetween("-365 days", "-10 days")>
+    endAt: <dateTimeBetween("-10 days", "now")>
+    inProgress: false
     createdAt: <dateTimeBetween("-365 days", "now")>
