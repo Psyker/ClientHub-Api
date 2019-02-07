@@ -53,7 +53,7 @@ class Client
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Intervention", mappedBy="client", orphanRemoval=true)
-     * @ORM\OrderBy({"created_at": "ASC"})
+     * @ORM\OrderBy({"createdAt": "ASC"})
      */
     private $interventions;
 

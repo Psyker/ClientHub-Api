@@ -68,7 +68,7 @@ class Intervention
         return $this->type;
     }
 
-    public function setType(InterventionType$type): self
+    public function setType(InterventionType $type): self
     {
         $this->type = $type;
 
