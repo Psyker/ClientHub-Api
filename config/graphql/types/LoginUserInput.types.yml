@@ -3,8 +3,7 @@ LoginUserInput:
   config:
     description: Input type of login user.
     fields:
-      username:
+      email:
         type: String!
       password:
         type: String!
-

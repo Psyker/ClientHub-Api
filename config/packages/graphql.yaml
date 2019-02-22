@@ -2,6 +2,7 @@ overblog_graphql:
     definitions:
         schema:
             query: Query
+            mutation: Mutation
             types:
                 - User
                 - Referrer
@@ -10,7 +11,6 @@ overblog_graphql:
         mappings:
             auto_discover: false
             types:
-                -
-                    type: yaml
-                    dir: "%kernel.project_dir%/config/graphql/types"
-                    suffix: ~
+            - type: yaml
+              dir: "%kernel.project_dir%/config/graphql/types"
+              suffix: ~

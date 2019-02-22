@@ -1,6 +1,6 @@
 <?php
 
-namespace App\GraphQL\Mutations;
+namespace App\GraphQL\Mutation;
 
 use App\Repository\UserRepository;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
@@ -37,12 +37,12 @@ class LoginUserMutation implements MutationInterface
 
     public function __invoke(Argument $argument)
     {
-        [$username, $password] = [$argument->offsetGet('username'), $argument->offsetGet('password')];
-        if ($viewer = $this->repository->findOneBy(compact($username))) {
+        [$email, $password] = [$argument->offsetGet('email'), $argument->offsetGet('password')];
+        if ($viewer = $this->repository->findOneBy(compact($email))) {
             if ($this->encoder->isPasswordValid($viewer, $password)) {
                 $token = $this->tokenManager->create($viewer);
 
-                return compact($token);
+                return compact('token');
             }
             throw new UserError('bad credentials.');
         }

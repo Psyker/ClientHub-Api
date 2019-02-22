@@ -8,4 +8,4 @@ Mutation:
         builderConfig:
           inputType: LoginUserInput
           payloadType: LoginUserPayload
-          mutateAndGetPayload: '@=mutation("App\\GraphQL\\Mutation\\User\\LoginUserMutation", [value, getUser()])'
+          mutateAndGetPayload: '@=mutation("App\\GraphQL\\Mutation\\LoginUserMutation", [value, getUser()])'
