@@ -1,0 +1,7 @@
+LoginUserPayload:
+  type: relay-mutation-payload
+  config:
+    fields:
+      token:
+        type: String!
+        description: The JWT token associated to the successfully logged in user.

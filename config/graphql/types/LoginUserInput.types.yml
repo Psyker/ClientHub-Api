@@ -1,0 +1,10 @@
+LoginUserInput:
+  type: relay-mutation-input
+  config:
+    description: Input type of login user.
+    fields:
+      username:
+        type: String!
+      password:
+        type: String!
+
