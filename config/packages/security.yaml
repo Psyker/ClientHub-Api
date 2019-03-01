@@ -15,7 +15,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         graphql:
-            pattern: ^/graphql/
+            pattern: ^/
             stateless: true
             anonymous: true
             lexik_jwt:
