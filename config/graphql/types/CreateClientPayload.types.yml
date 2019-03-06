@@ -1,0 +1,8 @@
+CreateClientPayload:
+  type: relay-mutation-payload
+  config:
+    description: Payload type of client creation.
+    fields:
+      client:
+        type: Client!
+        description: The new created client.

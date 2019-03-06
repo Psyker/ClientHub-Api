@@ -113,6 +113,11 @@ class User implements UserInterface
         return $this;
     }
 
+    public function hasRoles(string $role): bool
+    {
+        return in_array($role, $this->getRoles(), true);
+    }
+
     /**
      * @see UserInterface
      */
@@ -137,7 +142,7 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return $this->password;
     }
 
     public function setPassword(string $password): self

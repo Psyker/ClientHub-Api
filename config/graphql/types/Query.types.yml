@@ -3,7 +3,7 @@ Query:
   config:
     fields:
       viewer:
-         access: '@=isAuthenticated()'
+        access: '@=isAuthenticated()'
         type: User!
         description: The currently authenticated user.
         resolve: '@=getUser()'

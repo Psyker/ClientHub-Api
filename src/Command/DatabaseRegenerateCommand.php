@@ -10,7 +10,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class DatabaseRegenerateCommand extends Command
 {
-    protected static $defaultName = 'app:database:generate';
+    protected static $defaultName = 'app:database:regenerate';
 
     /**
      * @var SymfonyStyle

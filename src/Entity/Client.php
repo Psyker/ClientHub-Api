@@ -72,6 +72,7 @@ class Client
     {
         $this->interventions = new ArrayCollection();
         $this->referrers     = new ArrayCollection();
+        $this->createdAt     = new \DateTime('now');
     }
 
     public function getId(): ?string

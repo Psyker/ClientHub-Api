@@ -9,3 +9,10 @@ Mutation:
           inputType: LoginUserInput
           payloadType: LoginUserPayload
           mutateAndGetPayload: '@=mutation("App\\GraphQL\\Mutation\\LoginUserMutation", [value, getUser()])'
+      createClient:
+        access: '@=hasRole("ROLE_USER")'
+        builder: 'Relay::Mutation'
+        builderConfig:
+          inputType: CreateClientInput
+          payloadType: CreateClientPayload
+          mutateAndGetPayload: '@=mutation("App\\GraphQL\\Mutation\\Client\\CreateClientMutation", [value, getUser()])'
