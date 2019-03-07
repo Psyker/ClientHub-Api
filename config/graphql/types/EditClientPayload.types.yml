@@ -1,0 +1,8 @@
+EditClientPayload:
+  type: relay-mutation-payload
+  config:
+    description: The payload type of client edition
+    fields:
+      client:
+        type: Client!
+        description: The edited client.

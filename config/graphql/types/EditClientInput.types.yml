@@ -1,0 +1,17 @@
+EditClientInput:
+  type: relay-mutation-input
+  config:
+    description: The input type of client edition.
+    fields:
+      name:
+        type: String!
+        description: The name of the client.
+      address:
+        type: String!
+        description: The address of the client.
+      zip_code:
+        type: String!
+        description: The zip code of client's address
+      client:
+        type: String!
+        description: The client ID.

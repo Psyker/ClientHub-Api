@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\GraphQL\Mutation\Client;
 
 
@@ -12,12 +11,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use GraphQL\Error\UserError;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Definition\Resolver\MutationInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class CreateClientMutation implements MutationInterface
+class EditClientMutation implements MutationInterface
 {
     /**
      * @var ClientRepository
@@ -35,51 +32,43 @@ class CreateClientMutation implements MutationInterface
      * @var EntityManagerInterface
      */
     private $manager;
-    /**
-     * @var TokenStorageInterface
-     */
-    private $storage;
 
     public function __construct(
         ClientRepository $clientRepository,
         AuthorizationCheckerInterface $checker,
         ValidatorInterface $validator,
-        EntityManagerInterface $manager,
-        TokenStorageInterface $storage
+        EntityManagerInterface $manager
     ) {
         $this->clientRepository = $clientRepository;
         $this->checker = $checker;
         $this->validator = $validator;
         $this->manager = $manager;
-        $this->storage = $storage;
     }
 
     public function __invoke(Argument $argument)
     {
-        [$name, $address, $zipCode] = [
+        [$name, $address, $zipCode, $clientSlug] = [
             $argument->offsetGet('name'),
             $argument->offsetGet('address'),
-            $argument->offsetGet('zip_code')
+            $argument->offsetGet('zip_code'),
+            $argument->offsetGet('client')
         ];
-        /** @var UserInterface $user */
-        $user = $this->storage->getToken()->getUser();
+
         /** @var Client $client */
-        $client = new Client();
-        if (!$this->checker->isGranted(ClientVoter::CREATE, $client)) {
-            throw new UserError('You are not allowed to do this.');
-        }
-        if (!$this->clientRepository->findOneByName($name)) {
+        if ($client = $this->clientRepository->findOneBySlug($clientSlug)) {
+            if (!$this->checker->isGranted(ClientVoter::EDIT, $client)) {
+                throw new UserError('You are not allowed to do this.');
+            }
             $slugify = new Slugify();
             $client
                 ->setName($name)
                 ->setAddress($address)
                 ->setZipCode($zipCode)
-                ->setSlug($slugify->slugify($name))
-                ->setUser($user);
-            $this->manager->persist($client);
+                ->setSlug($slugify->slugify($name));
         } else {
-            throw new UserError("A client with the name $name already exist");
+            throw new UserError("The client with the slug $clientSlug does not exist");
         }
+
         $errors = $this->validator->validate($client);
         if ($errors->count() > 0) {
             throw new UserError($errors);
@@ -88,4 +77,5 @@ class CreateClientMutation implements MutationInterface
 
         return compact('client');
     }
+
 }

@@ -64,7 +64,7 @@ class Client
     private $referrers;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="clients")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="clients")
      */
     private $user;
 

@@ -16,7 +16,7 @@ Client:
         type: String!
         description: The address of the customer's registered office
       zipCode:
-        type: Int!
+        type: String!
         description: The zip code of the customer's registered office
       slug:
         type: String!
