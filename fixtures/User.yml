@@ -1,0 +1,8 @@
+App\Entity\User:
+  user{1..5}:
+    firstname: <firstName()>
+    lastname: <lastName()>
+    email: <safeEmail()>
+    plainPassword: password
+    roles: ['ROLE_USER']
+

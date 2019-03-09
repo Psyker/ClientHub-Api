@@ -15,7 +15,7 @@ class UserListener
         $this->encoder = $encoder;
     }
 
-    public function prePersist(User $user, LifecycleEventArgs $args)
+    public function prePersist(User $user, LifecycleEventArgs $args): void
     {
         if ($user->getPlainPassword()) {
             $password = $this->encoder->encodePassword($user, $user->getPlainPassword());
