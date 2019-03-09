@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -193,6 +194,24 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    public function serialize(): string
+    {
+        return \serialize([
+            $this->id,
+            $this->email,
+            $this->password
+        ]);
+    }
+
+    public function unserialize($serialized): void
+    {
+        [
+            $this->id,
+            $this->email,
+            $this->password,
+        ] = unserialize($serialized, [Uuid::class]);
     }
 
     public function __toString(): string

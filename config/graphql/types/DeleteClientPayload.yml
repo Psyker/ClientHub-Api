@@ -1,0 +1,7 @@
+DeleteClientPayload:
+  type: relay-mutation-payload
+  config:
+    fields:
+      deletedClientId:
+        type: ID!
+        description: The deleted client's id.

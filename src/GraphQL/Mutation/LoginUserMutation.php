@@ -38,7 +38,7 @@ class LoginUserMutation implements MutationInterface
     public function __invoke(Argument $argument)
     {
         [$email, $password] = [$argument->offsetGet('email'), $argument->offsetGet('password')];
-        if ($viewer = $this->repository->findOneBy(compact($email))) {
+        if ($viewer = $this->repository->findOneByEmail($email)) {
             if ($this->encoder->isPasswordValid($viewer, $password)) {
                 $token = $this->tokenManager->create($viewer);
 

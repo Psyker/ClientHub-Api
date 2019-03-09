@@ -23,3 +23,10 @@ Mutation:
           inputType: EditClientInput
           payloadType: EditClientPayload
           mutateAndGetPayload: '@=mutation("App\\GraphQL\\Mutation\\Client\\EditClientMutation", [value, getUser()])'
+      deleteClient:
+        access: '@=hasRole("ROLE_USER")'
+        builder: 'Relay::Mutation'
+        builderConfig:
+          inputType: DeleteClientInput
+          payloadType: DeleteClientPayload
+          mutateAndGetPayload: '@=mutation("App\\GraphQL\\Mutation\\Client\\DeleteClientMutation", [value, getUser()])'
