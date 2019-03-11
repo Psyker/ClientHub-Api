@@ -1,0 +1,7 @@
+InterventionConnection:
+  type: relay-connection
+  config:
+    nodeType: Intervention!
+    connectionFields:
+      totalCount:
+        type: Int!
