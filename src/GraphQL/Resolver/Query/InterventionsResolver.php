@@ -2,11 +2,10 @@
 
 namespace App\GraphQL\Resolver\Query;
 
-
+use App\Entity\Client;
 use App\Repository\InterventionRepository;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Definition\Resolver\ResolverInterface;
-use Overblog\GraphQLBundle\Relay\Connection\Output\Connection;
 use Overblog\GraphQLBundle\Relay\Connection\Output\ConnectionBuilder;
 
 class InterventionsResolver implements ResolverInterface
@@ -14,19 +13,20 @@ class InterventionsResolver implements ResolverInterface
     /**
      * @var InterventionRepository
      */
-    private $interventionRepository;
+    private $repository;
 
-    public function __construct(InterventionRepository $interventionRepository)
+    public function __construct(InterventionRepository $repository)
     {
-        $this->interventionRepository = $interventionRepository;
+        $this->repository = $repository;
     }
 
-    public function __invoke(Argument $args): Connection
+    public function __invoke(Client $client, Argument $args)
     {
-        $client = $args->offsetGet('clientId');
-        $interventions = $this->interventionRepository->findBy([
-            'client' => $client
-        ]);
+        $orderBy = $args->offsetGet('orderBy');
+        $interventions = $this->repository->findBy(
+            ['client' => $client],
+            [$orderBy['field'] => $orderBy['direction']]
+        );
         $connection = ConnectionBuilder::connectionFromArray($interventions, $args);
         $connection->totalCount = \count($interventions);
 

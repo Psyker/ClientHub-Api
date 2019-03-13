@@ -61,8 +61,8 @@ class CreateInterventionMutation implements MutationInterface
 
     public function __invoke(Argument $args)
     {
-        [$clientId, $startAt, $endAt, $inProgress, $type] = [
-            $args->offsetGet('clientId'),
+        [$client, $startAt, $endAt, $inProgress, $type] = [
+            $args->offsetGet('client'),
             $args->offsetGet('startAt'),
             $args->offsetGet('endAt'),
             $args->offsetGet('inProgress'),
@@ -73,8 +73,7 @@ class CreateInterventionMutation implements MutationInterface
         if (!$this->checker->isGranted(InterventionVoter::CREATE, $intervention)) {
             throw new UserError('You are not allowed to do this.');
         }
-
-        $client = $this->clientRepository->find($clientId);
+        $client = $this->clientRepository->find($client);
 
         if (!$this->interventionRepository->findOneBy([
             'client' => $client,
@@ -84,8 +83,13 @@ class CreateInterventionMutation implements MutationInterface
             throw new UserError('An intervention is already planned for this client, at this time.');
         }
 
-        /** @var InterventionType $type */
-        $type = $this->typeRepository->findOneBy(['name' => $type]);
+        try {
+            /** @var InterventionType $type */
+            $type = $this->typeRepository->findOneBy(['name' => $type]);
+        } catch (\Exception $exception) {
+            throw new UserError('The client does not exist.');
+        }
+
         $intervention
             ->setClient($client)
             ->setStartAt($startAt)

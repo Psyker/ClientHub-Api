@@ -54,7 +54,6 @@ class Client
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Intervention", mappedBy="client", orphanRemoval=true)
-     * @ORM\OrderBy({"createdAt": "ASC"})
      */
     private $interventions;
 
@@ -72,7 +71,6 @@ class Client
     {
         $this->interventions = new ArrayCollection();
         $this->referrers     = new ArrayCollection();
-        $this->createdAt     = new \DateTime('now');
     }
 
     public function getId(): ?string

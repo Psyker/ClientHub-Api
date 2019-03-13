@@ -10,10 +10,10 @@ Intervention:
         builderConfig:
           typeName: Intervention
       client:
-        type: '[Client]'
+        type: Client!
         description: The client receiving the intervention.
       type:
-        type: 'InterventionType'
+        type: InterventionType!
         description: The type of the intervention.
       startAt:
         description: The start date of the intervention.

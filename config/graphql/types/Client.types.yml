@@ -22,8 +22,14 @@ Client:
         type: String!
         description: The slug of the client based on the name.
       interventions:
-        type: '[Intervention]'
+        type: InterventionConnection!
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\Query\\InterventionsResolver", [value, args])'
+        argsBuilder: Relay::Connection
         description: Interventions made at the customer's premises
+        args:
+          orderBy:
+            type: ClientInterventionOrder
+            defaultValue: { field: startAt, direction: ASC }
       referrers:
         type: '[Referrer]'
         description: The client's referrers.

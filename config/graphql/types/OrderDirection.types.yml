@@ -1,0 +1,11 @@
+OrderDirection:
+  type: enum
+  config:
+    description: Directions in which you can order the interventions
+    values:
+      ASC:
+        value: ASC
+        description: Ascending order
+      DESC:
+        value: DESC
+        description: Descending order

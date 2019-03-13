@@ -1,0 +1,11 @@
+ClientInterventionOrderField:
+  type: enum
+  config:
+    description: Properties by which the interventions can be ordered.
+    values:
+      START_AT:
+        value: startAt
+        description: Order by the start date of the intervention.
+      END_AT:
+        value: endAt
+        description: Order by the end date of the intervention.

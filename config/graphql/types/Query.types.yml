@@ -23,11 +23,3 @@ Query:
         resolve: '@=resolver("App\\GraphQL\\Resolver\\Query\\ClientResolver", [args])'
         args:
           search: ClientSearch!
-      interventions:
-        description: Get all interventions.
-        type: InterventionConnection!
-        argsBuilder: Relay::Connection
-        resolve: '@=resolver("App\\GraphQL\\Resolver\\Query\\InterventionsResolver", [args])'
-        args:
-          client:
-            type: String!

@@ -1,0 +1,12 @@
+ClientInterventionOrder:
+  type: input-object
+  config:
+    description: Ways in which interventions can be ordered
+    fields:
+      field:
+        type: ClientInterventionOrderField!
+        description: The field to order by
+      direction:
+        type: OrderDirection!
+        defaultValue: ASC
+        description: The direction in which to order the interventions.
