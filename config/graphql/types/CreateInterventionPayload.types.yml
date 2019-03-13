@@ -1,0 +1,8 @@
+CreateInterventionPayload:
+  type: relay-mutation-payload
+  config:
+    description: The payload of the intervention creation.
+    fields:
+      intervention:
+        type: Intervention!
+        description: The new intervention.

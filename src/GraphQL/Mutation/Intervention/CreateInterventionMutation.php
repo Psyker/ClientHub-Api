@@ -61,11 +61,10 @@ class CreateInterventionMutation implements MutationInterface
 
     public function __invoke(Argument $args)
     {
-        [$client, $startAt, $endAt, $inProgress, $type] = [
+        [$client, $startAt, $endAt, $type] = [
             $args->offsetGet('client'),
             $args->offsetGet('startAt'),
             $args->offsetGet('endAt'),
-            $args->offsetGet('inProgress'),
             $args->offsetGet('type')
         ];
 
@@ -77,10 +76,10 @@ class CreateInterventionMutation implements MutationInterface
 
         if (!$this->interventionRepository->findOneBy([
             'client' => $client,
-            'createdAt' => new \DateTime($startAt),
+            'startAt' => new \DateTime($startAt),
             'endAt' => new \DateTime($endAt)
         ])) {
-            throw new UserError('An intervention is already planned for this client, at this time.');
+            throw new UserError('An intervention is already planned for this client at this time.');
         }
 
         try {
@@ -95,7 +94,7 @@ class CreateInterventionMutation implements MutationInterface
             ->setStartAt($startAt)
             ->setEndAt($endAt)
             ->setType($type)
-            ->setInProgress($inProgress);
+            ->setInProgress(false);
 
         $errors = $this->validator->validate($intervention);
         if ($errors->count() > 0) {

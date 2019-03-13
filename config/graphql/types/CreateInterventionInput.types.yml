@@ -1,0 +1,17 @@
+CreateInterventionInput:
+  type: relay-mutation-input
+  config:
+    description: The input type of the intervention creation
+    fields:
+      startAt:
+        type: DateTime!
+        description: The start date of the intervention
+      endAt:
+        type: DateTime!
+        description: The end date of the intervention
+      client:
+        type: String!
+        description: The client ID.
+      type:
+        type: String!
+        description: The intervention's type name.

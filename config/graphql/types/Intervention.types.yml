@@ -17,9 +17,9 @@ Intervention:
         description: The type of the intervention.
       startAt:
         description: The start date of the intervention.
-        type: DateTime
+        type: DateTime!
       endAt:
         description: The end date of the intervention.
-        type: DateTime
+        type: DateTime!
       inProgress:
         type: Boolean!
