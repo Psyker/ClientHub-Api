@@ -4,10 +4,10 @@ CreateInterventionInput:
     description: The input type of the intervention creation
     fields:
       startAt:
-        type: DateTime!
+        type: String!
         description: The start date of the intervention
       endAt:
-        type: DateTime!
+        type: String!
         description: The end date of the intervention
       client:
         type: String!

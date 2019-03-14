@@ -2,7 +2,6 @@
 
 namespace App\GraphQL\Mutation\Intervention;
 
-
 use App\Entity\Intervention;
 use App\Entity\InterventionType;
 use App\Repository\ClientRepository;
@@ -13,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Overblog\GraphQLBundle\Definition\Argument;
 use Overblog\GraphQLBundle\Definition\Resolver\MutationInterface;
 use GraphQL\Error\UserError;
+use Overblog\GraphQLBundle\Relay\Node\GlobalId;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -72,21 +72,24 @@ class CreateInterventionMutation implements MutationInterface
         if (!$this->checker->isGranted(InterventionVoter::CREATE, $intervention)) {
             throw new UserError('You are not allowed to do this.');
         }
-        $client = $this->clientRepository->find($client);
+        $clientId = GlobalId::fromGlobalId($client)['id'];
+        $client = $this->clientRepository->find($clientId);
+        $startAt = new \DateTime($startAt);
+        $endAt = new \DateTime($endAt);
 
-        if (!$this->interventionRepository->findOneBy([
+        if ($this->interventionRepository->findOneBy([
             'client' => $client,
-            'startAt' => new \DateTime($startAt),
-            'endAt' => new \DateTime($endAt)
+            'startAt' => $startAt,
+            'endAt' => $endAt
         ])) {
             throw new UserError('An intervention is already planned for this client at this time.');
         }
 
-        try {
-            /** @var InterventionType $type */
-            $type = $this->typeRepository->findOneBy(['name' => $type]);
-        } catch (\Exception $exception) {
-            throw new UserError('The client does not exist.');
+
+        /** @var InterventionType $type */
+        $type = $this->typeRepository->findOneBy(['name' => $type]);
+        if (!$type) {
+            throw new UserError('This type does not exist.');
         }
 
         $intervention
@@ -95,6 +98,7 @@ class CreateInterventionMutation implements MutationInterface
             ->setEndAt($endAt)
             ->setType($type)
             ->setInProgress(false);
+        $this->manager->persist($intervention);
 
         $errors = $this->validator->validate($intervention);
         if ($errors->count() > 0) {
