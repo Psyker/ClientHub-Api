@@ -33,6 +33,12 @@ class Client
     private $name;
 
     /**
+     * @var string $description
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    /**
      * @Assert\NotBlank()
      * @Assert\Length(min="10", max="200")
      * @ORM\Column(type="text", length=200)
@@ -40,10 +46,22 @@ class Client
     private $address;
 
     /**
+     * @var string $city
+     * @ORM\Column(type="string", length=200)
+     */
+    private $city;
+
+    /**
      * @Assert\NotBlank()
      * @ORM\Column(type="string")
      */
     private $zipCode;
+
+    /**
+     * @var BusinessSegment $businessSegment
+     * @ORM\OneToOne(targetEntity="App\Entity\BusinessSegment")
+     */
+    private $businessSegment;
 
     /**
      * @ORM\Column(type="string", length=150)
@@ -61,6 +79,12 @@ class Client
      * @ORM\OneToMany(targetEntity="App\Entity\Referrer", mappedBy="client", orphanRemoval=true)
      */
     private $referrers;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private $phone;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="clients")
@@ -196,6 +220,82 @@ class Client
     public function setUser(UserInterface $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     * @return self
+     */
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity(): string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     * @return self
+     */
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     * @return self
+     */
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * @return BusinessSegment
+     */
+    public function getBusinessSegment(): BusinessSegment
+    {
+        return $this->businessSegment;
+    }
+
+    /**
+     * @param BusinessSegment $businessSegment
+     * @return Client
+     */
+    public function setBusinessSegment(BusinessSegment $businessSegment): Client
+    {
+        $this->businessSegment = $businessSegment;
 
         return $this;
     }
