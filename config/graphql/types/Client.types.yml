@@ -12,6 +12,9 @@ Client:
       name:
         type: String!
         description: The company name of the client
+      description:
+        type: String!
+        description: The client's description
       address:
         type: String!
         description: The address of the customer's registered office
@@ -33,3 +36,12 @@ Client:
       referrers:
         type: '[Referrer]'
         description: The client's referrers.
+      businessSegment:
+        type: BusinessSegment
+        description: The client's business segment.
+      city:
+        type: String!
+        description: The client's city.
+      phone:
+        type: String!
+        description: The client's phone number.

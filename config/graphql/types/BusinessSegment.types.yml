@@ -1,0 +1,14 @@
+BusinessSegment:
+  type: object
+  inherits: [Node]
+  config:
+    interfaces: [Node]
+    description: A business segment.
+    fields:
+      id:
+        builder: 'Relay::GlobalId'
+        builderConfig:
+          typeName: BusinessSegment
+      name:
+        type: String!
+        description: The business segment name.

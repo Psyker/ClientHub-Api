@@ -1,15 +1,23 @@
 App\Entity\Client:
   client{1..5}:
     name: <company()>
+    description: <realText(300)>
     address: <streetaddress()>
     zipCode: <numberBetween(11111, 99999)>
     slug: <slug()>
     createdAt: <dateTimeBetween("-365 days", "now")>
     user: "@user<current()>"
+    city: <city()>
+    businessSegment: "@businessSegment<current()>"
+    phone: <phoneNumber()>
   client6:
     name: <company()>
+    description: <realText(300)>
     address: <streetaddress()>
     zipCode: <numberBetween(11111, 99999)>
     slug: <slug()>
     createdAt: <dateTimeBetween("-365 days", "now")>
     user: "@user1"
+    businessSegment: "@businessSegment6"
+    city: <city()>
+    phone: <phoneNumber()>
