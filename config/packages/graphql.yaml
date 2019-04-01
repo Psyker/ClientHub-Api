@@ -8,6 +8,8 @@ overblog_graphql:
                 - Referrer
                 - Intervention
                 - Client
+                - BusinessSegment
+                - InterventionType
         mappings:
             auto_discover: false
             types:

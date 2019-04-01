@@ -87,7 +87,7 @@ class CreateInterventionMutation implements MutationInterface
 
 
         /** @var InterventionType $type */
-        $type = $this->typeRepository->findOneBy(['name' => $type]);
+        $type = $this->typeRepository->findOneBy(['slug' => $type]);
         if (!$type) {
             throw new UserError('This type does not exist.');
         }

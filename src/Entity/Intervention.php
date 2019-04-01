@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Traits\Timestampable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InterventionRepository")
@@ -33,11 +34,13 @@ class Intervention
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime
      */
     private $startAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime
      */
     private $endAt;
 

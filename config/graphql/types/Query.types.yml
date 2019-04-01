@@ -32,3 +32,7 @@ Query:
         description: Get one intervention.
         type: Intervention!
         resolve: '@=resolver("App\\GraphQL\\Resolver\\Query\\InterventionResolver", [args])'
+      businessSegments:
+        description: Get all business segments.
+        type: '[BusinessSegment]'
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\Query\\BusinessSegmentsResolver", [args])'

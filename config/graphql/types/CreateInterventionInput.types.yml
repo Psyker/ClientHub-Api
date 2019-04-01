@@ -14,4 +14,4 @@ CreateInterventionInput:
         description: The client ID.
       type:
         type: String!
-        description: The intervention's type name.
+        description: The intervention's type slug.
