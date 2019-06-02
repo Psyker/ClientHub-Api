@@ -12,3 +12,12 @@ CreateClientInput:
       zip_code:
         type: String!
         description: The zip code of client's address.
+      city:
+        type: String!
+        description: The city of the client.
+      description:
+        type: String
+        description: A short description of the client.
+      phone:
+        type: String
+        description: THe phone number of the client.

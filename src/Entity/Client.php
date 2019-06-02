@@ -34,7 +34,7 @@ class Client
 
     /**
      * @var string $description
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
@@ -60,6 +60,7 @@ class Client
     /**
      * @var BusinessSegment $businessSegment
      * @ORM\OneToOne(targetEntity="App\Entity\BusinessSegment")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $businessSegment;
 
@@ -82,7 +83,7 @@ class Client
 
     /**
      * @var string
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $phone;
 

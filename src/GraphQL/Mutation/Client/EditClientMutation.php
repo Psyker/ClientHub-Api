@@ -2,7 +2,6 @@
 
 namespace App\GraphQL\Mutation\Client;
 
-
 use App\Entity\Client;
 use App\Repository\ClientRepository;
 use App\Security\Voter\ClientVoter;
@@ -47,10 +46,13 @@ class EditClientMutation implements MutationInterface
 
     public function __invoke(Argument $argument)
     {
-        [$name, $address, $zipCode, $clientSlug] = [
+        [$name, $address, $zipCode,  $city, $description, $phone, $clientSlug] = [
             $argument->offsetGet('name'),
             $argument->offsetGet('address'),
             $argument->offsetGet('zip_code'),
+            $argument->offsetGet('city'),
+            $argument->offsetGet('description'),
+            $argument->offsetGet('phone'),
             $argument->offsetGet('client')
         ];
 
@@ -64,6 +66,9 @@ class EditClientMutation implements MutationInterface
                 ->setName($name)
                 ->setAddress($address)
                 ->setZipCode($zipCode)
+                ->setCity($city)
+                ->setDescription($description)
+                ->setPhone($phone)
                 ->setSlug($slugify->slugify($name));
         } else {
             throw new UserError("The client with the slug $clientSlug does not exist");

@@ -56,10 +56,12 @@ class CreateClientMutation implements MutationInterface
 
     public function __invoke(Argument $argument)
     {
-        [$name, $address, $zipCode] = [
+        [$name, $address, $zipCode, $city, $description] = [
             $argument->offsetGet('name'),
             $argument->offsetGet('address'),
-            $argument->offsetGet('zip_code')
+            $argument->offsetGet('zip_code'),
+            $argument->offsetGet('city'),
+            $argument->offsetGet('description'),
         ];
         /** @var UserInterface $user */
         $user = $this->storage->getToken()->getUser();
@@ -74,6 +76,8 @@ class CreateClientMutation implements MutationInterface
                 ->setName($name)
                 ->setAddress($address)
                 ->setZipCode($zipCode)
+                ->setCity($city)
+                ->setDescription($description)
                 ->setSlug($slugify->slugify($name))
                 ->setUser($user);
             $this->manager->persist($client);
